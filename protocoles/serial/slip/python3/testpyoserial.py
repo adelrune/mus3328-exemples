@@ -1,6 +1,6 @@
 # exemple d'utilisation de slip avec pyo en python3
 
-from pyo_serial_tools import SLIPIO
+from python_slip_tools import SLIPIO
 from pyo import *
 
 s = Server().boot()
