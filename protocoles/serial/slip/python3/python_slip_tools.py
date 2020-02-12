@@ -12,7 +12,7 @@ class SLIPIO:
     """
     def __init__(self, port_name, baud_rate, callback, sleep_time=0.002):
         # 0.002 est un chiffre arbitraire, vous pouvez le modifier si vous avez des problèmes de performance
-        self.sleep_time = 0.002
+        self.sleep_time = sleep_time
         self.port_name = port_name
         self.baud_rate = baud_rate
         self.serial_port = SerialComm.connectToSerialPort(port_name, baud_rate)
@@ -23,7 +23,7 @@ class SLIPIO:
         while (True):
             bytes = ProtoSLIP.decodeFromSLIP(self.serial_port)
             values = []
-            if len(bytes) >= 2:
+            if len(bytes) >= 2 and len(bytes) % 2 == 0:
                 for i in range(0, len(bytes), 2):
                     values.append(bytes[i]<<8 | bytes[i+1])
                 self.callback(values, lambda x: SerialComm.writeToSerialPort(self.serial_port, x))
