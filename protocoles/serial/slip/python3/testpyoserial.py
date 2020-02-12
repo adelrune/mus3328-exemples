@@ -5,7 +5,7 @@ from pyo import *
 
 s = Server().boot()
 
-# sig avec interpolation de pyo avec un buffer de 3 valeurs (à augmenter si vous avez plus de seunseurs)
+# sig avec interpolation de pyo avec un buffer de 3 valeurs (à augmenter si vous avez plus de senseurs)
 sig = SigTo([0]*3)
 
 
